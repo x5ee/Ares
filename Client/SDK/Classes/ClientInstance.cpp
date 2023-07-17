@@ -8,3 +8,7 @@ auto ClientInstance::getPlayer(void) -> Player* {
     return _GetPlayer(this);
 
 };
+
+auto ClientInstance::getbadrefdef(void) -> glmatrixf* {
+    return (glmatrixf*)((uintptr_t)(this) + 0x330);
+};
