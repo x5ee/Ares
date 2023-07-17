@@ -6,7 +6,27 @@
 template<typename A, typename B>
 class AutomaticID;
 
+struct EntityId {
+    uint32_t id;
+};
+
+class EntityRegistry;
+
+struct EntityContext {
+    EntityRegistry* registry;
+    EntityId id;
+};
+
+struct RuntimeIDComponent
+{
+    uint64_t runtimeId;
+};
+
 class Actor {
+public:
+    EntityContext ctx;
+public:
+    auto getRuntimeID(void) -> uint64_t;
 private:
     virtual ~Actor(void);
 public:
