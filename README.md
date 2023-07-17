@@ -23,7 +23,7 @@ The Minecraft Bedrock Edition Client C++ Internal is a custom client for Minecra
 2. Open the project folder in Visual Studio Code.
 3. Install the recommended extensions for C++ development (if prompted).
 4. Build the project using CMake.
-5. Locate the compiled executable in the output folder.
+5. Locate the compiled dll in the output folder.
 
 ### Usage
 
