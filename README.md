@@ -1,4 +1,4 @@
-# Minecraft Bedrock Edition Client C++ Internal
+# Ares Bedrock Edition Client
 ![Minecraft Bedrock Edition](https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d6/Bedrock_Edition_App_Store_icon_1.png/revision/latest?cb=20210914141811)
 
 ## Description
