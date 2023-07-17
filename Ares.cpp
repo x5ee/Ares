@@ -7,10 +7,18 @@ auto init(HINSTANCE hInstance) -> void {
     auto instance = MC::getClientInstance();
     auto player = (instance ? instance->getPlayer() : nullptr);
 
-    auto msg = std::string(ares->name + ": Hello, World!");
+    if(!player)
+        return;
+
+    Utils::debugOutput(std::string("Runtime ID: " + std::to_string(player->getRuntimeID())));
     
+    std::ostringstream o;
+    o << std::hex << instance << std::endl;
+
     if(player)
-        player->displayClientMessage(&msg);
+        o << std::hex << player;
+
+    Utils::debugOutput(o.str());
 
 };
 
