@@ -3,7 +3,7 @@
 
 ## Description
 
-The Minecraft Bedrock Edition Client C++ Internal is a custom client for Minecraft Bedrock Edition on Windows 10, written in C++. It aims to enhance the gameplay experience with additional features and modifications.
+The Ares Bedrock Edition Client is a custom client for Minecraft Bedrock Edition on Windows 10, written in C++. It aims to enhance the gameplay experience with additional features and modifications.
 
 ## Version Support
 ⚠️ **Ares currently only supports Minecraft v1.20.10 (Bedrock, Windows 10 Edition).**
