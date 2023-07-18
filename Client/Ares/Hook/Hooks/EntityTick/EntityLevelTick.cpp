@@ -7,7 +7,7 @@ Manager* entTickMgr = nullptr;
 
 auto EntityTickCallback(Actor* entity) {
 
-    if(entTickMgr != nullptr) {
+    if(entTickMgr) {
 
         auto runtimeID = entity->getRuntimeID();
         entTickMgr->entityMap.emplace(runtimeID, entity);
@@ -28,7 +28,7 @@ auto EntityLevelTickHook::init(void) -> void {
         return Utils::debugOutput("Failed to find signature for EntityLevelTick hook!");
     
     if(MH_CreateHook((void*)sig, &EntityTickCallback, reinterpret_cast<LPVOID*>(&_EntityTick)) != MH_OK)
-        return Utils::debugOutput("Failed to detour for EntityLevelTick hook!");
+        return Utils::debugOutput("Failed to create detour for EntityLevelTick hook!");
     
     MH_EnableHook((void*)sig);
 
