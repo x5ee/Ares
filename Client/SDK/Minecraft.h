@@ -3,6 +3,8 @@
 
 #include "Classes/ClientInstance.h"
 
+enum MouseAction { NONE = 0, LMB = 1, RMB = 2, WHEEL_CLICK = 3, WHEEL_SCROLL = 4 };
+
 class MC {
 public:
     static auto getClientInstance(void) -> ClientInstance*;
