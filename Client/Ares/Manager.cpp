@@ -11,6 +11,13 @@ Manager::Manager(Client* c) {
 
 };
 
+auto Manager::baseTick(void) -> void {
+
+    for(auto category : this->categories)
+        category->baseTick();
+
+};
+
 #include "Category/Module/Modules/Other/TestModule.h"
 
 auto Manager::initSubModules(void) -> void {
