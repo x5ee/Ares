@@ -7,12 +7,21 @@ Manager::Manager(Client* c) {
 
     this->initHooks();
     this->initCategories();
+    this->initSubModules();
 
 };
 
+#include "Category/Module/Modules/Other/TestModule.h"
+
 auto Manager::initSubModules(void) -> void {
 
-    //
+    auto other = this->findCategory("Other");
+
+    if(other) {
+
+        new TestModule(other);
+
+    };
 
 };
 
@@ -37,5 +46,20 @@ auto Manager::initHooks(void) -> void {
     
     this->hooks.push_back(new EntityLevelTickHook(this));
     this->hooks.push_back(new GameModeHook(this));
+
+};
+
+auto Manager::findCategory(std::string name) -> Category* {
+
+    auto categoryIterator = std::find_if(categories.begin(), categories.end(),
+        [&name](const Category* category) {
+            return category->name == name;
+        }
+    );
+
+    if(categoryIterator != categories.end())
+        return *categoryIterator;
+    
+    return nullptr;
 
 };
