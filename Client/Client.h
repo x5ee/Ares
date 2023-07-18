@@ -12,6 +12,8 @@ public:
     std::string name;
     Manager* mgr;
 public:
+    bool isRunning = false;
+public:
     Client(std::string);
 };
 
