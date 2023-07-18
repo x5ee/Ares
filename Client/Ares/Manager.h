@@ -8,6 +8,12 @@ public:
     Client* client = nullptr;
 public:
     Manager(Client*);
+public:
+    std::vector<class Category*> categories;
+    std::vector<class Hook*> hooks;
+public:
+    auto initCategories(void) -> void;
+    auto initHooks(void) -> void;
 };
 
 #endif /* CLIENT_ARES_MANAGER */

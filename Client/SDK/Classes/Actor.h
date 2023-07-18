@@ -1,7 +1,7 @@
 #ifndef CLIENT_SDK_CLASSES_ACTOR
 #define CLIENT_SDK_CLASSES_ACTOR
 
-#include "../../Utils/Utils.h"
+#include "Level.h"
 
 template<typename A, typename B>
 class AutomaticID;
@@ -27,6 +27,7 @@ public:
     EntityContext ctx;
 public:
     auto getRuntimeID(void) -> uint64_t;
+    auto getLevel(void) -> Level*;
 private:
     virtual ~Actor(void);
 public:

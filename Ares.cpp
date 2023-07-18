@@ -1,25 +1,32 @@
 #include "Client/Client.h"
 
+typedef void ( __thiscall* EntityLevelTick ) ( Actor* );
+EntityLevelTick _EntityLevelTick;
+
+std::map<uint64_t, Actor*> entityMap;
+
+auto EntityLevelTickCallback(Actor* entity) -> void {
+
+    if(entity && entity->ctx.id.id) {
+
+        auto runtimeID = entity->getRuntimeID();
+
+        if(!entityMap.contains(runtimeID)) {
+            
+            entityMap[runtimeID] = entity;
+            Utils::debugOutput(std::string("New Entity: " + std::to_string(runtimeID)));
+
+        };
+
+    };
+
+    _EntityLevelTick(entity);
+
+};
+
 auto init(HINSTANCE hInstance) -> void {
 
     auto ares = new Client("Ares");
-
-    auto instance = MC::getClientInstance();
-    auto player = (instance ? instance->getPlayer() : nullptr);
-
-    if(!player)
-        return;
-
-    Utils::debugOutput(std::string("Runtime ID: " + std::to_string(player->getRuntimeID())));
-    
-    std::ostringstream o;
-    o << std::hex << instance << std::endl;
-
-    if(player)
-        o << std::hex << player;
-
-    Utils::debugOutput(o.str());
-
 };
 
 auto WINAPI DllMain(HINSTANCE hInstance, DWORD fdwReason, LPVOID lpRes) -> BOOL {
