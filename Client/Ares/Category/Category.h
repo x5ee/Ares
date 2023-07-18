@@ -8,7 +8,11 @@ public:
     std::string name;
     Manager* mgr = nullptr;
 public:
+    std::vector<class Module*> modules;
+public:
     Category(Manager*, std::string);
+public:
+    auto registerModule(class Module*) -> void;
 };
 
 #endif /* CLIENT_ARES_CATEGORY_CATEGORY */
