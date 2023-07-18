@@ -51,6 +51,7 @@ auto Manager::initCategories(void) -> void {
 
 };
 
+#include "Hook/Hooks/RenderContext/RenderContextTick.h"
 #include "Hook/Hooks/EntityTick/EntityLevelTick.h"
 #include "Hook/Hooks/GameMode/GameMode.h"
 
@@ -60,6 +61,8 @@ auto Manager::initHooks(void) -> void {
 
     if(MH_Initialize() != MH_OK)
         return;
+    
+    this->hooks.push_back(new RenderCtxHook(this));
     
     this->hooks.push_back(new EntityLevelTickHook(this));
     this->hooks.push_back(new GameModeHook(this));
