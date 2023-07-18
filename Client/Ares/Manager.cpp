@@ -18,9 +18,19 @@ auto Manager::baseTick(void) -> void {
 
 };
 
+#include "Category/Module/Modules/Combat/Killaura.h"
+
 #include "Category/Module/Modules/Other/TestModule.h"
 
 auto Manager::initSubModules(void) -> void {
+
+    auto combat = this->findCategory("Combat");
+
+    if(combat) {
+
+        new Killaura(combat);
+
+    };
 
     auto other = this->findCategory("Other");
 
