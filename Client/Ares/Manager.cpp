@@ -19,6 +19,7 @@ auto Manager::baseTick(void) -> void {
 };
 
 #include "Category/Module/Modules/Combat/Killaura.h"
+#include "Category/Module/Modules/Combat/Hitbox.h"
 
 #include "Category/Module/Modules/Other/TestModule.h"
 
@@ -29,6 +30,7 @@ auto Manager::initSubModules(void) -> void {
     if(combat) {
 
         new Killaura(combat);
+        new Hitbox(combat);
 
     };
 
