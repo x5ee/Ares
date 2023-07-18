@@ -14,6 +14,8 @@ public:
     std::vector<class Category*> categories;
     std::vector<class Hook*> hooks;
 public:
+    auto baseTick(void) -> void;
+public:
     auto initSubModules(void) -> void;
     auto initCategories(void) -> void;
     auto initHooks(void) -> void;
