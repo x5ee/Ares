@@ -2,10 +2,6 @@
 #define CLIENT_ARES_HOOK_HOOKS_SWAPCHAIN_SWAPCHAIN
 
 #include "../../Hook.h"
-#include "../../../../../Includes/imgui/imgui.h"
-#include "../../../../../Includes/imgui/imgui_impl_dx11.h"
-#include "../../../../../Includes/imgui/imgui_impl_dx12.h"
-#include "../../../../../Includes/imgui/imgui_impl_win32.h"
 
 class SwapChainHook : public Hook {
 public:
