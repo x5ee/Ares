@@ -18,3 +18,9 @@ auto Actor::getLevel(void) -> Level* {
     return *(Level**)((uintptr_t)(this) + 0x260);
 
 };
+
+auto Actor::getSize(void) -> Vec2<float> {
+
+    return *(Vec2<float>*)((uintptr_t)(*(uintptr_t**)((uintptr_t)(this) + 0x2A8)) + 0x18);
+
+};
