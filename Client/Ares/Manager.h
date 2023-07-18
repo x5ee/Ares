@@ -7,6 +7,8 @@ class Manager {
 public:
     Client* client = nullptr;
 public:
+    std::map<uint64_t, Actor*> entityMap;
+public:
     Manager(Client*);
 public:
     std::vector<class Category*> categories;
