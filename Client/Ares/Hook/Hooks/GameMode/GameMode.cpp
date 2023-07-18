@@ -25,6 +25,8 @@ auto GameModeTickCallback(GameMode* GM) -> void {
 
 auto GameModeHook::init(void) -> void {
 
+    gmManager = this->mgr;
+    
     auto sig = Mem::findSig("48 8D 05 ? ? ? ? 48 89 01  48 89 51 ? 48 C7 41 10");
 
     if(!sig)
