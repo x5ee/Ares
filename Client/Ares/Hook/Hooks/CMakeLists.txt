@@ -1,3 +1,4 @@
 add_subdirectory(RenderContext)
 add_subdirectory(EntityTick)
+add_subdirectory(SwapChain)
 add_subdirectory(GameMode)
