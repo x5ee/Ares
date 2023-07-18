@@ -28,6 +28,8 @@ public:
 public:
     auto getRuntimeID(void) -> uint64_t;
     auto getLevel(void) -> Level*;
+public:
+    auto getSize(void) -> Vec2<float>;
 private:
     virtual ~Actor(void);
 public:
