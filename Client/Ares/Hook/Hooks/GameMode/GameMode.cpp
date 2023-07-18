@@ -1,4 +1,5 @@
 #include "GameMode.h"
+#include "../../../Category/Module/Module.h"
 
 typedef void (__thiscall* GameModeTick)(GameMode*);
 GameModeTick _GameModeTick;
@@ -9,7 +10,12 @@ auto GameModeTickCallback(GameMode* GM) -> void {
 
     if(gmManager) {
 
-        // WIP
+        for(auto category : gmManager->categories) {
+            for(auto module : category->modules) {
+                if(module->isEnabled)
+                    module->onGameMode(GM);
+            };
+        };
 
     };
 
