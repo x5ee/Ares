@@ -17,6 +17,8 @@ public:
     auto initSubModules(void) -> void;
     auto initCategories(void) -> void;
     auto initHooks(void) -> void;
+public:
+    auto findCategory(std::string) -> Category*;
 };
 
 #endif /* CLIENT_ARES_MANAGER */
