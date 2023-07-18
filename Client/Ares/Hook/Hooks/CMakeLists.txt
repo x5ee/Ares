@@ -1,1 +1,2 @@
 add_subdirectory(EntityTick)
+add_subdirectory(GameMode)
