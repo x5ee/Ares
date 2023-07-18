@@ -12,6 +12,8 @@ public:
 public:
     Category(Manager*, std::string);
 public:
+    auto baseTick(void) -> void;
+public:
     auto registerModule(class Module*) -> void;
 };
 
