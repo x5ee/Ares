@@ -24,6 +24,8 @@ public:
     virtual auto interact(class Actor*, Vec3<float>*) -> bool;
     virtual auto attack(class Actor*) -> bool;
     virtual auto releaseUsingItem(void) -> void;
+    virtual auto setTrialMode(bool) -> void;
+    virtual auto isInTrialMode(void) -> bool;
 };
 
 #endif /* CLIENT_SDK_CLASSES_GAMEMODE */
