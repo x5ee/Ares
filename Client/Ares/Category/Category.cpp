@@ -6,3 +6,10 @@ Category::Category(Manager* m, std::string n) {
     this->name = n.c_str();
 
 };
+
+auto Category::registerModule(Module* module) -> void {
+
+    if(std::find(this->modules.begin(), this->modules.end(), module) == this->modules.end())
+        this->modules.push_back(module);
+
+};
