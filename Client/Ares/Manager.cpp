@@ -5,9 +5,7 @@ Manager::Manager(Client* c) {
 
     this->client = reinterpret_cast<Client*>(c);
 
-    if(MH_Initialize() == MH_OK)
-        this->initHooks();
-    
+    this->initHooks();
     this->initCategories();
 
 };
@@ -21,8 +19,15 @@ auto Manager::initCategories(void) -> void {
 
 };
 
+#include "Hook/Hooks/EntityTick/EntityLevelTick.h"
+
 auto Manager::initHooks(void) -> void {
 
     this->hooks.erase(this->hooks.begin(), this->hooks.end());
+
+    if(MH_Initialize() != MH_OK)
+        return;
+    
+    this->hooks.push_back(new EntityLevelTickHook(this));
 
 };
