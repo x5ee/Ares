@@ -1,2 +1,3 @@
+add_subdirectory(RenderContext)
 add_subdirectory(EntityTick)
 add_subdirectory(GameMode)
