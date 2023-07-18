@@ -1,0 +1,1 @@
+target_sources(Ares PRIVATE SwapChain.cpp)
