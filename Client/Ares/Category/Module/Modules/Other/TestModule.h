@@ -6,9 +6,10 @@
 class TestModule : public Module {
 public:
     TestModule(Category* c) : Module("Test Module", c) {
-        //this->isEnabled = true;
+        this->isEnabled = true;
     };
 public:
+    auto onImGui(void) -> void override;
     auto onGameMode(GameMode*) -> void override;
 };
 
