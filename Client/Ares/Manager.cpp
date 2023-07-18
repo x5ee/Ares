@@ -55,6 +55,7 @@ auto Manager::initCategories(void) -> void {
 #include "Hook/Hooks/EntityTick/EntityLevelTick.h"
 #include "Hook/Hooks/SwapChain/SwapChain.h"
 #include "Hook/Hooks/GameMode/GameMode.h"
+#include "Hook/Hooks/Mouse/Mouse.h"
 
 auto Manager::initHooks(void) -> void {
 
@@ -68,6 +69,7 @@ auto Manager::initHooks(void) -> void {
     this->hooks.push_back(new EntityLevelTickHook(this));
     this->hooks.push_back(new SwapChainHook(this));
     this->hooks.push_back(new GameModeHook(this));
+    this->hooks.push_back(new MouseHook(this));
 
 };
 
