@@ -10,6 +10,12 @@ Manager::Manager(Client* c) {
 
 };
 
+auto Manager::initSubModules(void) -> void {
+
+    //
+
+};
+
 auto Manager::initCategories(void) -> void {
 
     this->categories.erase(this->categories.begin(), this->categories.end());
@@ -20,6 +26,7 @@ auto Manager::initCategories(void) -> void {
 };
 
 #include "Hook/Hooks/EntityTick/EntityLevelTick.h"
+#include "Hook/Hooks/GameMode/GameMode.h"
 
 auto Manager::initHooks(void) -> void {
 
@@ -29,5 +36,6 @@ auto Manager::initHooks(void) -> void {
         return;
     
     this->hooks.push_back(new EntityLevelTickHook(this));
+    this->hooks.push_back(new GameModeHook(this));
 
 };
