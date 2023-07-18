@@ -1,4 +1,5 @@
 #include "SwapChain.h"
+#include "../../../Category/Module/Module.h"
 
 struct FrameContext {
 	ID3D12CommandAllocator* commandAllocator = nullptr;
@@ -25,6 +26,7 @@ typedef void(__thiscall* ExecuteCommandListsD3D12)(ID3D12CommandQueue* queue, UI
 ExecuteCommandListsD3D12 oExecuteCommandListsD3D12;
 
 bool imguiContextInit = false;
+Manager* scMgr = nullptr;
 
 auto commandListHook(ID3D12CommandQueue* queue, UINT NumCommandLists, ID3D12CommandList* ppCommandLists) -> void {
 
@@ -51,11 +53,16 @@ auto presentHook(IDXGISwapChain3* ppSwapChain, UINT syncInterval, UINT flags) ->
 
 	auto onRndr = [&]() {
 
-		if (ImGui::Begin("Hello, World!")) {
+		if(scMgr) {
 
-			ImGui::End();
-		
-		}
+			for(auto category : scMgr->categories) {
+				for(auto module : category->modules) {
+					if(module->isEnabled)
+						module->onImGui();
+				};
+			};
+
+		};
 
 	};
 
@@ -245,7 +252,9 @@ auto presentHook(IDXGISwapChain3* ppSwapChain, UINT syncInterval, UINT flags) ->
 
 auto SwapChainHook::init(void) -> void {
 
-    IDXGISwapChain* pSwapChain;
+    scMgr = this->mgr;
+	
+	IDXGISwapChain* pSwapChain;
 
 	WNDCLASSEX windowClass;
 	windowClass.cbSize = sizeof(WNDCLASSEX);
