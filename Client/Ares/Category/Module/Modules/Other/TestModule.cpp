@@ -2,30 +2,17 @@
 
 auto TestModule::onImGui(void) -> void {
 
+    auto categories = this->category->mgr->categories;
+    
     if(ImGui::Begin("ImGui")) {
 
-        ImGui::End();
+        for(auto category : categories) {
 
-    };
+            //
 
-    static bool once = false;
-
-    if(!once) {
-
-        once = true;
-
-        auto instance = MC::getClientInstance();
-        auto player = (instance ? instance->getPlayer() : nullptr);
+        };
         
-        std::ostringstream o;
-        o << std::hex << player;
-
-        Utils::debugOutput(o.str());
-
-        auto size = player->getSize();
-        auto sizeStr = std::string(std::to_string(size.x) + ", " + std::to_string(size.y));
-
-        Utils::debugOutput(sizeStr);
+        ImGui::End();
 
     };
 
