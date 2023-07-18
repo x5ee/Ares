@@ -8,6 +8,8 @@ public:
     TestModule(Category* c) : Module("Test Module", c) {
         this->isEnabled = true;
     };
+public:
+    auto onGameMode(GameMode*) -> void override;
 };
 
 #endif /* CLIENT_ARES_CATEGORY_MODULE_MODULES_OTHER_TESTMODULE */
