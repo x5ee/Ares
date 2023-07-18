@@ -9,7 +9,6 @@ public:
         this->isEnabled = true;
     };
 public:
-    auto onImGui(void) -> void override;
     auto onGameMode(GameMode*) -> void override;
 };
 
