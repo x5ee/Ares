@@ -17,6 +17,8 @@ public:
     virtual auto onTick(void) -> void {};
     virtual auto onEnable(void) -> void {};
     virtual auto onDisable(void) -> void {};
+public:
+    virtual auto onGameMode(GameMode*) -> void {};
 };
 
 #endif /* CLIENT_ARES_CATEGORY_MODULE_MODULE */
