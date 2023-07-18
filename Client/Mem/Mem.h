@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <MinHook.h>
 #include <optional>
+#include <stdint.h>
 #include <vector>
 #include <map>
 
@@ -15,7 +16,10 @@
 #include <dxgi1_4.h>
 #include <initguid.h>
 
-#include <stdint.h>
+#include "../../Includes/imgui/imgui.h"
+#include "../../Includes/imgui/imgui_impl_dx11.h"
+#include "../../Includes/imgui/imgui_impl_dx12.h"
+#include "../../Includes/imgui/imgui_impl_win32.h"
 
 #define INRANGE(x,a,b) (x >= a && x <= b)
 #define GET_BYTE( x )  (GET_BITS(x[0]) << 4 | GET_BITS(x[1]))
