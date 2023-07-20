@@ -2,12 +2,39 @@
 
 auto ClickGui::onImGui(void) -> void {
 
+    ImGuiStyle& style = ImGui::GetStyle();
+
+    // Change button colors
+    style.Colors[ImGuiCol_Button] = ImVec4(0.3f, 0.5f, 0.8f, 1.0f);       // Button background color when idle
+    style.Colors[ImGuiCol_ButtonHovered] = ImVec4(0.4f, 0.6f, 0.9f, 1.0f);  // Button background color when hovered
+    style.Colors[ImGuiCol_ButtonActive] = ImVec4(0.2f, 0.4f, 0.7f, 1.0f);   // Button background color when pressed
+
+    // Change button rounding
+    style.FrameRounding = 6.0f;
+
+    // Change button border size and rounding (optional)
+    style.GrabMinSize = 40.0f; // Minimum size for "drag box" in a button
+    style.GrabRounding = 4.0f; // Rounding for "drag box" in a button
+
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(8.0f, 6.0f)); // Adjust frame padding for all elements
+    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]); // Use a larger font for improved readability
+
     auto categories = this->category->mgr->categories;
     
     static int selectedCategory = 0;
     static int selectedModule = 0;
+
+    const float contentWidth = 400.0f;
+    const float windowWidth = 150.0f + 200.0f + contentWidth + 16.0f;
     
     if(ImGui::Begin("ImGui", nullptr, ImGuiWindowFlags_MenuBar)) {
+
+        static bool setWindowSize = false;
+
+        if(!setWindowSize) {
+            setWindowSize = true;
+            ImGui::SetWindowSize(ImVec2(windowWidth, 600.0f));
+        };
 
         if(ImGui::BeginChild("Categories", ImVec2(150, 0), true)) {
 
@@ -59,9 +86,13 @@ auto ClickGui::onImGui(void) -> void {
             if(module) {
 
                 ImGui::Text(module->name.c_str());
+
+                ImGui::PushStyleColor(ImGuiCol_Button, module->isEnabled ? ImVec4(0.0f, 1.0f, 0.0f, 1.0f) : ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
                 
-                if(ImGui::Button(module->name.c_str(), ImVec2(0, 0)))
+                if(ImGui::Button(module->name.c_str(), ImVec2(0.f, 0.f)))
                     module->isEnabled = !module->isEnabled;
+                
+                ImGui::PopStyleColor();
                 
                 ImGui::EndChild();
 
@@ -74,5 +105,8 @@ auto ClickGui::onImGui(void) -> void {
         ImGui::End();
 
     };
+
+    ImGui::PopStyleVar();
+    ImGui::PopFont();
 
 };
