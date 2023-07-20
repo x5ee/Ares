@@ -18,8 +18,10 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
             continue;
         
         auto typeId = ent->getEntityTypeId();
-
-        if(typeId == 64 || typeId == 69)
+        
+        if(typeId == 63 && !attackPlayers)
+            continue;
+        else if(typeId != 63 && !attackMobs)
             continue;
         
         auto dist = (*ent->getPosition()).dist(myPos);
@@ -55,5 +57,15 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
         GM->attack(entity);
 
     };
+
+};
+
+auto Killaura::onImGuiOptions(void) -> void {
+
+    ImGui::SliderFloat("Range", &this->range, 1.f, 12.f);
+    
+    ImGui::Checkbox("Mobs", &this->attackMobs);
+    ImGui::SameLine();
+    ImGui::Checkbox("Players", &this->attackPlayers);
 
 };
