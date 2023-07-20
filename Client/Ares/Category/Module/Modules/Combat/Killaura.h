@@ -10,8 +10,11 @@ public:
     };
 public:
     auto onGameMode(GameMode*) -> void override;
+    auto onImGuiOptions(void) -> void override;
 public:
     float range = 12.f;
+    bool attackMobs = true;
+    bool attackPlayers = true;
 };
 
 #endif /* CLIENT_ARES_CATEGORY_MODULE_MODULES_COMBAT_KILLAURA */
