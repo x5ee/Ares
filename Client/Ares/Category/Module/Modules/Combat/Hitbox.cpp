@@ -15,8 +15,8 @@ auto Hitbox::onGameMode(GameMode* GM) -> void {
 
         if(!this->collisions.contains(typeId))
             this->collisions[typeId] = entity->getSize();
-        
-        entity->setSize(this->radius.x, this->radius.y);
+        else
+            entity->setSize(this->radius.x, this->radius.y);
 
     };
 
@@ -28,8 +28,8 @@ auto Hitbox::onDisable(void) -> void {
 
         auto typeId = entity->getEntityTypeId();
 
-        if(this->collisions.contains(typeId))
-            this->collisions[typeId] = entity->getSize();
+        if(!this->collisions.contains(typeId))
+            continue;
         
         auto size = this->collisions[typeId];
         entity->setSize(size.x, size.y);
