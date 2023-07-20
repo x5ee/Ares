@@ -16,7 +16,7 @@ The Ares Bedrock Edition Client is a custom client for Minecraft Bedrock Edition
 
 ### Prerequisites
 
-- Windows 10
+- Windows 10 or 11
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [CMake](https://cmake.org/download/)
 
