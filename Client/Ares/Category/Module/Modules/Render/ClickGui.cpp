@@ -27,7 +27,7 @@ auto ClickGui::onImGui(void) -> void {
     const float contentWidth = 400.0f;
     const float windowWidth = 150.0f + 200.0f + contentWidth + 16.0f;
     
-    if(ImGui::Begin("Ares", nullptr, ImGuiWindowFlags_MenuBar)) {
+    if(ImGui::Begin(this->category->mgr->client->name.c_str(), nullptr, ImGuiWindowFlags_MenuBar)) {
 
         static bool setWindowSize = false;
 
