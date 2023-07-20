@@ -1,7 +1,19 @@
 #include "TestModule.h"
 
-auto TestModule::onGameMode(GameMode* GM) -> void {
+auto TestModule::onTick(void) -> void {
 
-    GM->player->setSprinting(true);
+    //
+
+};
+
+auto TestModule::onEnable(void) -> void {
+
+    //
+
+};
+
+auto TestModule::onDisable(void) -> void {
+
+    //
 
 };
