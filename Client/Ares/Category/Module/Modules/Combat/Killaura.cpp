@@ -40,6 +40,9 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
     );
 
     dists = std::map<uint64_t, double>(distsVector.begin(), distsVector.end());
+
+    if(dists.empty())
+        return;
     
     auto count = 0;
     for(auto [ runtimeId, dist ] : dists) {
