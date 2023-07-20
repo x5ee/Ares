@@ -21,6 +21,8 @@ auto Manager::baseTick(void) -> void {
 #include "Category/Module/Modules/Combat/Killaura.h"
 #include "Category/Module/Modules/Combat/Hitbox.h"
 
+#include "Category/Module/Modules/Player/AutoSprint.h"
+
 #include "Category/Module/Modules/Render/ClickGui.h"
 
 #include "Category/Module/Modules/Other/TestModule.h"
@@ -33,6 +35,14 @@ auto Manager::initSubModules(void) -> void {
 
         new Killaura(combat);
         new Hitbox(combat);
+
+    };
+
+    auto player = this->findCategory("Player");
+
+    if(player) {
+
+        new AutoSprint(player);
 
     };
 
