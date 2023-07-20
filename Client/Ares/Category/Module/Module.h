@@ -19,6 +19,8 @@ public:
     virtual auto onDisable(void) -> void {};
 public:
     virtual auto onImGui(void) -> void {};
+    virtual auto onImGuiOptions(void) -> void {};
+public:
     virtual auto onGameMode(GameMode*) -> void {};
 };
 
