@@ -14,7 +14,7 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
     auto dists = std::map<uint64_t, double>();
     for(auto [ runtimeId, ent ] : entMap) {
 
-        if(!ent->isAlive() || localRuntimeID == runtimeId || !player->canAttack(ent, false))
+        if(localRuntimeID == runtimeId || !ent->isAlive() || !ent->isAttackableMob())
             continue;
         
         auto typeId = ent->getEntityTypeId();
@@ -44,7 +44,7 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
 
         auto entity = level->getRuntimeEntity(runtimeId);
 
-        if(!entity || !player->canAttack(entity, false) || !entity->isAlive())
+        if(!entity || !entity->isAlive() || !entity->isAttackableMob())
             continue;
         
         if(count >= 2)
