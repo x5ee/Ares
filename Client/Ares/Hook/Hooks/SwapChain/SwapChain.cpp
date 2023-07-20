@@ -114,6 +114,8 @@ auto presentHook(IDXGISwapChain3* ppSwapChain, UINT syncInterval, UINT flags) ->
 
 		if (mainRenderTargetView)
 			mainRenderTargetView->Release();
+		
+		return oPresentD3D12(ppSwapChain, syncInterval, flags);
 
 	}
 
@@ -243,6 +245,7 @@ auto presentHook(IDXGISwapChain3* ppSwapChain, UINT syncInterval, UINT flags) ->
 			frameContext->main_render_target_resource->Release();
 
 		delete frameContext;
+		return oPresentD3D12(ppSwapChain, syncInterval, flags);
 
 	};
 
