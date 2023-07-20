@@ -7,7 +7,7 @@ Manager* mhMgr = nullptr;
 
 auto MouseHookCallback(void* p1, MouseAction action, bool isDown, short p4, short p5, void* p6, void* p7, void* p8) -> void {
 
-	if (ImGui::GetCurrentContext() && (action != MouseAction::NONE && action != MouseAction::WHEEL_SCROLL && action != MouseAction::WHEEL_CLICK))
+	if (ImGui::GetCurrentContext() != nullptr && (action != MouseAction::NONE && action != MouseAction::WHEEL_SCROLL && action != MouseAction::WHEEL_CLICK))
 		ImGui::GetIO().MouseDown[0] = isDown;
 
 	oMouse(p1, action, isDown, p4, p5, p6, p7, p8);
