@@ -30,6 +30,8 @@ public:
     auto getLevel(void) -> Level*;
 public:
     auto getSize(void) -> Vec2<float>;
+public:
+    auto isAttackableMob(void) -> bool;
 private:
     virtual ~Actor(void);
 public:
