@@ -39,3 +39,10 @@ auto Hitbox::onDisable(void) -> void {
     this->collisions.clear();
 
 };
+
+auto Hitbox::onImGuiOptions(void) -> void {
+
+    ImGui::SliderFloat("Width", &this->radius.x, 0.f, 12.f);
+    ImGui::SliderFloat("Height", &this->radius.y, 0.f, 12.f);
+
+};
