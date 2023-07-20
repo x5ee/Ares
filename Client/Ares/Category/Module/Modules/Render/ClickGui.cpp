@@ -92,6 +92,8 @@ auto ClickGui::onImGui(void) -> void {
                 if(ImGui::Button(module->name.c_str(), ImVec2(0.f, 0.f)))
                     module->isEnabled = !module->isEnabled;
                 
+                module->onImGuiOptions();
+                
                 ImGui::PopStyleColor();
                 
                 ImGui::EndChild();
