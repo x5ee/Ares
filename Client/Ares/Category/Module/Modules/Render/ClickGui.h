@@ -9,7 +9,10 @@ public:
         this->isEnabled = true;
     };
 public:
+    auto onGameMode(GameMode*) -> void override;
+public:
     auto onImGui(void) -> void override;
+    auto onDisable(void) -> void override;
 };
 
 #endif /* CLIENT_ARES_CATEGORY_MODULE_MODULES_RENDER_CLICKGUI */
