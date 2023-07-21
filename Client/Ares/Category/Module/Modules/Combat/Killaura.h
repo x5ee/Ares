@@ -15,6 +15,9 @@ public:
     float range = 12.f;
     bool attackMobs = true;
     bool attackPlayers = true;
+public:
+    std::chrono::time_point<std::chrono::system_clock> time = std::chrono::system_clock::now();
+    int msDelay = 50;
 };
 
 #endif /* CLIENT_ARES_CATEGORY_MODULE_MODULES_COMBAT_KILLAURA */
