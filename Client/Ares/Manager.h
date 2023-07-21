@@ -22,6 +22,7 @@ public:
     auto initHooks(void) -> void;
 public:
     auto findCategory(std::string) -> Category*;
+    auto isUsingKey(uint64_t) -> bool;
 };
 
 #endif /* CLIENT_ARES_MANAGER */
