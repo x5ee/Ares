@@ -1,5 +1,16 @@
 #include "ClickGui.h"
 
+auto ClickGui::onGameMode(GameMode* GM) -> void {
+
+    auto instance = MC::getClientInstance();
+
+    if(instance == nullptr)
+        return;
+    
+    instance->releaseMouse();
+
+};
+
 auto ClickGui::onImGui(void) -> void {
 
     ImGuiStyle& style = ImGui::GetStyle();
@@ -110,5 +121,21 @@ auto ClickGui::onImGui(void) -> void {
 
     ImGui::PopStyleVar();
     ImGui::PopFont();
+
+};
+
+auto ClickGui::onDisable(void) -> void {
+
+    Sleep(100);
+
+    auto instance = MC::getClientInstance();
+
+    if(!instance)
+        return;
+    
+    auto screenName = instance->getTopScreenName();
+
+    if(screenName.rfind("hud_screen") != std::string::npos)
+        instance->grabMouse();
 
 };
