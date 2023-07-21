@@ -15,6 +15,33 @@ auto ClientInstance::getbadrefdef(void) -> glmatrixf* {
 
 };
 
+auto ClientInstance::grabMouse(void) -> void {
+
+    using GrabMouse = void (__thiscall*)(ClientInstance*);
+    auto _GrabMouse = (GrabMouse)(this->VTable[305]);
+
+    _GrabMouse(this);
+
+};
+
+auto ClientInstance::releaseMouse(void) -> void {
+
+    using ReleaseMouse = void (__thiscall*)(ClientInstance*);
+    auto _ReleaseMouse = (ReleaseMouse)(this->VTable[306]);
+
+    _ReleaseMouse(this);
+
+};
+
+auto ClientInstance::refocusMouse(void) -> void {
+
+    using RefocusMouse = void (__thiscall*)(ClientInstance*);
+    auto _RefocusMouse = (RefocusMouse)(this->VTable[307]);
+
+    _RefocusMouse(this);
+
+};
+
 auto ClientInstance::getTopScreenName(void) -> std::string {
 
     std::string out;
