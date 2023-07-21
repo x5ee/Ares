@@ -6,7 +6,7 @@
 class GameModeHook : public Hook {
 public:
     GameModeHook(Manager* mgr) : Hook(mgr) {
-        //this->init();
+        this->init();
     };
 public:
     auto init(void) -> void override;

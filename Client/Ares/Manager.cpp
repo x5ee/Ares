@@ -95,13 +95,6 @@ auto Manager::initHooks(void) -> void {
     this->hooks.push_back(new MouseHook(this));
     this->hooks.push_back(new KeyHook(this));
 
-    for(auto hook : this->hooks) {
-
-        hook->init();
-        Sleep(500);
-
-    };
-
 };
 
 auto Manager::findCategory(std::string name) -> Category* {

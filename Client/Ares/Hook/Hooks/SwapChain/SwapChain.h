@@ -6,7 +6,7 @@
 class SwapChainHook : public Hook {
 public:
     SwapChainHook(Manager* mgr) : Hook(mgr) {
-        //this->init();
+        this->init();
     };
 public:
     auto init(void) -> void override;

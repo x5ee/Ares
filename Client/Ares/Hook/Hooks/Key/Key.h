@@ -6,7 +6,7 @@
 class KeyHook : public Hook {
 public:
     KeyHook(Manager* mgr) : Hook(mgr) {
-        //this->init();
+        this->init();
     };
 public:
     auto init(void) -> void override;
