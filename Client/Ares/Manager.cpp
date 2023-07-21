@@ -111,3 +111,9 @@ auto Manager::findCategory(std::string name) -> Category* {
     return nullptr;
 
 };
+
+auto Manager::isUsingKey(uint64_t key) -> bool {
+
+    return (this->keyMap.contains(key) ? this->keyMap[key] : false);
+
+};
