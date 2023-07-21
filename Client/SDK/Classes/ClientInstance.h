@@ -10,6 +10,8 @@ public:
     auto getPlayer(void) -> Player*;
 public:
     auto getbadrefdef(void) -> glmatrixf*;
+public:
+    auto getTopScreenName(void) -> std::string;
 };
 
 #endif /* CLIENT_SDK_CLASSES_CLIENTINSTANCE */

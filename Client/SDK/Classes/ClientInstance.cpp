@@ -10,5 +10,19 @@ auto ClientInstance::getPlayer(void) -> Player* {
 };
 
 auto ClientInstance::getbadrefdef(void) -> glmatrixf* {
+    
     return (glmatrixf*)((uintptr_t)(this) + 0x330);
+
+};
+
+auto ClientInstance::getTopScreenName(void) -> std::string {
+
+    std::string out;
+
+    using GetTopScreenName = void (__thiscall*)(ClientInstance*, std::string*);
+    auto _GetTopScreenName = (GetTopScreenName)(this->VTable[137]);
+
+    _GetTopScreenName(this, &out);
+    return out;
+
 };
