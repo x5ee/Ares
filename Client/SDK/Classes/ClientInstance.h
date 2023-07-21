@@ -11,6 +11,10 @@ public:
 public:
     auto getbadrefdef(void) -> glmatrixf*;
 public:
+    auto grabMouse(void) -> void;
+    auto releaseMouse(void) -> void;
+    auto refocusMouse(void) -> void;
+public:
     auto getTopScreenName(void) -> std::string;
 };
 
