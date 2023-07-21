@@ -2,13 +2,21 @@
 
 auto Killaura::onGameMode(GameMode* GM) -> void {
 
+    if(std::chrono::system_clock::now() < (this->time + std::chrono::milliseconds(this->msDelay)))
+        return;
+
+    this->time = std::chrono::system_clock::now();
+
     auto player = GM->player;
     auto level = player->getLevel();
     auto myPos = *player->getPosition();
     auto localRuntimeID = player->getRuntimeID();
     auto entMap = this->category->mgr->entityMap;
 
-    if(entMap.empty())
+    auto instance = MC::getClientInstance();
+    auto screenName = instance->getTopScreenName();
+
+    if(entMap.empty() || (screenName.rfind("hud_screen") != std::string::npos && this->category->mgr->isUsingKey(VK_SHIFT)))
         return;
     
     auto dists = std::map<uint64_t, double>();
@@ -52,7 +60,7 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
         if(!entity || !entity->isAlive() || !entity->isAttackableMob())
             continue;
         
-        if(count >= 2)
+        if(count >= 4)
             break;
         
         count++;
