@@ -9,6 +9,7 @@ public:
     Category* category;
 public:
     bool wasEnabled = false, isEnabled = false;
+    uint64_t key = 0x0;
 public:
     Module(std::string, Category*);
 public:
@@ -22,6 +23,8 @@ public:
     virtual auto onImGuiOptions(void) -> void {};
 public:
     virtual auto onGameMode(GameMode*) -> void {};
+public:
+    virtual auto onKey(uint64_t, bool, bool*) -> void {};
 };
 
 #endif /* CLIENT_ARES_CATEGORY_MODULE_MODULE */

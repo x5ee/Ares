@@ -78,6 +78,7 @@ auto Manager::initCategories(void) -> void {
 #include "Hook/Hooks/SwapChain/SwapChain.h"
 #include "Hook/Hooks/GameMode/GameMode.h"
 #include "Hook/Hooks/Mouse/Mouse.h"
+#include "Hook/Hooks/Key/Key.h"
 
 auto Manager::initHooks(void) -> void {
 
@@ -86,12 +87,20 @@ auto Manager::initHooks(void) -> void {
     if(MH_Initialize() != MH_OK)
         return;
     
+    this->hooks.push_back(new SwapChainHook(this));
     this->hooks.push_back(new RenderCtxHook(this));
     
     this->hooks.push_back(new EntityLevelTickHook(this));
-    this->hooks.push_back(new SwapChainHook(this));
     this->hooks.push_back(new GameModeHook(this));
     this->hooks.push_back(new MouseHook(this));
+    this->hooks.push_back(new KeyHook(this));
+
+    for(auto hook : this->hooks) {
+
+        hook->init();
+        Sleep(500);
+
+    };
 
 };
 

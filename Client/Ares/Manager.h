@@ -8,6 +8,7 @@ public:
     Client* client = nullptr;
 public:
     std::map<uint64_t, Actor*> entityMap;
+    std::map<uint64_t, bool> keyMap;
 public:
     Manager(Client*);
 public:

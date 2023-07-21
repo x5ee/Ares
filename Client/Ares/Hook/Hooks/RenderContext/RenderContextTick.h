@@ -6,7 +6,7 @@
 class RenderCtxHook : public Hook {
 public:
     RenderCtxHook(Manager* mgr) : Hook(mgr) {
-        this->init();
+        //this->init();
     };
 public:
     auto init(void) -> void override;

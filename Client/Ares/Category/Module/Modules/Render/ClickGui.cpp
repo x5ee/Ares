@@ -11,6 +11,17 @@ auto ClickGui::onGameMode(GameMode* GM) -> void {
 
 };
 
+auto ClickGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
+
+    *cancel = true;
+    
+    if(isDown || key != VK_ESCAPE)
+        return;
+    
+    this->isEnabled = false;
+
+};
+
 auto ClickGui::onImGui(void) -> void {
 
     ImGuiStyle& style = ImGui::GetStyle();
