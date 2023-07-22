@@ -14,10 +14,13 @@ public:
     Module(std::string, Category*);
 public:
     auto baseTick(void) -> void;
+    auto setState(bool) -> void;
 public:
     virtual auto onTick(void) -> void {};
     virtual auto onEnable(void) -> void {};
     virtual auto onDisable(void) -> void {};
+public:
+    virtual auto onRenderCtx(void*) -> void {};
 public:
     virtual auto onImGui(void) -> void {};
     virtual auto onImGuiOptions(void) -> void {};
