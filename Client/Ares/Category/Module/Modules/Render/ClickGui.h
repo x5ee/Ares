@@ -15,6 +15,7 @@ public:
     auto onMouse(MouseAction, bool, Vec2<short>, bool*) -> void override;
 public:
     auto onImGui(void) -> void override;
+    auto onRenderCtx(void*) -> void override;
     auto onDisable(void) -> void override;
 };
 
