@@ -1,4 +1,5 @@
 #include "RenderContextTick.h"
+#include "../../../Category/Module/Module.h"
 
 typedef void (__thiscall* RenderCtx)(void*, void*);
 RenderCtx _RenderCtx;
@@ -8,6 +9,14 @@ Manager* rndrCtxMgr = nullptr;
 auto RenderCtxCallback(void* p1, void* ctx) -> void {
 
     if(rndrCtxMgr) {
+
+        for(auto category : rndrCtxMgr->categories) {
+
+            for(auto module : category->modules) {
+                if(module->isEnabled)
+                    module->onRenderCtx(ctx);
+            };
+        };
 
         auto instance = *(ClientInstance**)((uintptr_t)(ctx) + 0x8);
         
