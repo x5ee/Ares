@@ -31,6 +31,11 @@ auto ClickGui::onMouse(MouseAction action, bool isDown, Vec2<short> mousePos, bo
 auto ClickGui::onImGui(void) -> void {
 
     ImGuiStyle& style = ImGui::GetStyle();
+    
+    style.WindowRounding = 10.0f; // Adjust the window rounding to your preference
+    style.Colors[ImGuiCol_WindowBg] = ImVec4(0.08f, 0.08f, 0.08f, 0.8f); // Light gray window background
+    style.Colors[ImGuiCol_TitleBg] = ImVec4(0.2f, 0.2f, 0.2f, 1.0f); // Dark gray title bar background
+    style.Colors[ImGuiCol_TitleBgActive] = ImVec4(0.3f, 0.3f, 0.3f, 1.0f); // Dark gray title bar background when active (hovered)
 
     // Change button colors
     style.Colors[ImGuiCol_Button] = ImVec4(0.3f, 0.5f, 0.8f, 1.0f);       // Button background color when idle
@@ -56,6 +61,9 @@ auto ClickGui::onImGui(void) -> void {
     const float windowWidth = 150.0f + 200.0f + contentWidth + 16.0f;
     
     if(ImGui::Begin(this->category->mgr->client->name.c_str(), nullptr, ImGuiWindowFlags_MenuBar)) {
+        
+        auto added = ImVec2(ImGui::GetWindowPos().x + ImGui::GetWindowSize().x, ImGui::GetWindowPos().y + ImGui::GetWindowSize().y);
+        ImGui::GetWindowDrawList()->AddRectFilled(ImGui::GetWindowPos(), added, IM_COL32(56, 56, 56, 255), style.WindowRounding);
 
         static bool setWindowSize = false;
 
