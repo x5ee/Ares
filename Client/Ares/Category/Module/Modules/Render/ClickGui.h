@@ -12,6 +12,7 @@ public:
 public:
     auto onGameMode(GameMode*) -> void override;
     auto onKey(uint64_t, bool, bool*) -> void override;
+    auto onMouse(MouseAction, bool, Vec2<short>, bool*) -> void override;
 public:
     auto onImGui(void) -> void override;
     auto onDisable(void) -> void override;
