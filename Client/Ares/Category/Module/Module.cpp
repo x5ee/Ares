@@ -26,3 +26,9 @@ auto Module::baseTick(void) -> void {
         onTick();
 
 };
+
+auto Module::setState(bool state) -> void {
+
+    this->isEnabled = state;
+
+};
