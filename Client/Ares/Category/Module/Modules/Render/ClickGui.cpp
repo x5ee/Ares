@@ -22,6 +22,12 @@ auto ClickGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
 
 };
 
+auto ClickGui::onMouse(MouseAction action, bool isDown, Vec2<short> mousePos, bool* cancel) -> void {
+
+    *cancel = true;
+
+};
+
 auto ClickGui::onImGui(void) -> void {
 
     ImGuiStyle& style = ImGui::GetStyle();
