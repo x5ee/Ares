@@ -25,6 +25,7 @@ public:
     virtual auto onGameMode(GameMode*) -> void {};
 public:
     virtual auto onKey(uint64_t, bool, bool*) -> void {};
+    virtual auto onMouse(MouseAction, bool isDown, Vec2<short>, bool*) -> void {};
 };
 
 #endif /* CLIENT_ARES_CATEGORY_MODULE_MODULE */
