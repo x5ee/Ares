@@ -120,9 +120,9 @@ auto ClickGui::onImGui(void) -> void {
                 if(ImGui::Button(module->name.c_str(), ImVec2(0.f, 0.f)))
                     module->isEnabled = !module->isEnabled;
                 
-                module->onImGuiOptions();
-                
                 ImGui::PopStyleColor();
+
+                module->onImGuiOptions();
                 
                 ImGui::EndChild();
 
@@ -138,6 +138,16 @@ auto ClickGui::onImGui(void) -> void {
 
     ImGui::PopStyleVar();
     ImGui::PopFont();
+
+};
+
+auto ClickGui::onRenderCtx(void* ctx) -> void {
+
+    auto instance = *(ClientInstance**)((uintptr_t)(ctx) + 0x8);
+    auto screenName = (instance ? instance->getTopScreenName() : "");
+
+    if(screenName.rfind("hud_screen") == std::string::npos)
+        this->isEnabled = false;
 
 };
 
