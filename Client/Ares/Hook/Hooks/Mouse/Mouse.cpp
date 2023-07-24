@@ -10,8 +10,12 @@ auto MouseHookCallback(void* p1, MouseAction action, bool isDown, short p4, shor
 
     bool cancel = false;
 
-	if (ImGui::GetCurrentContext() != nullptr && (action != MouseAction::NONE && action != MouseAction::WHEEL_SCROLL && action != MouseAction::WHEEL_CLICK))
-		ImGui::GetIO().MouseDown[0] = isDown;
+	if(ImGui::GetCurrentContext() != nullptr && action != MouseAction::NONE) {
+
+        if(action != MouseAction::NONE && action != MouseAction::WHEEL_SCROLL && action != MouseAction::WHEEL_CLICK)
+            ImGui::GetIO().MouseDown[0] = isDown;
+        
+    };
     
     for(auto category : mhMgr->categories) {
 
