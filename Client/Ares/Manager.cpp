@@ -58,7 +58,7 @@ auto Manager::initSubModules(void) -> void {
 
     if(other) {
 
-        new TestModule(other);
+        //new TestModule(other);
 
     };
 
