@@ -39,7 +39,7 @@ auto presentHook(IDXGISwapChain3* ppSwapChain, UINT syncInterval, UINT flags) ->
 	
 	static int count = 0;
 
-	if(count < 500) {
+	if(count < 100) {
 
 		count++;
 		return oPresentD3D12(ppSwapChain, syncInterval, flags);
