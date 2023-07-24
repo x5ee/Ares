@@ -2,13 +2,19 @@
 
 auto ClickGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
 
-    //
+    *cancel = true;
+
+    if(isDown && key == VK_ESCAPE)
+        this->isEnabled = false;
 
 };
 
 auto ClickGui::onMouse(MouseAction action, bool isDown, Vec2<short> mousePos, bool* cancel) -> void {
 
-    //
+    if(action == MouseAction::NONE || !isDown)
+        return;
+    
+    *cancel = true;
 
 };
 
