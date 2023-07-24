@@ -15,7 +15,7 @@ auto KeyHookCallback(uint64_t key, bool isDown) -> void {
     
     if(kMgr) {
 
-        kMgr->keyMap[key] = isDown;
+        kMgr->keyMap.emplace(key, isDown);
 
         for(auto category : kMgr->categories) {
             
