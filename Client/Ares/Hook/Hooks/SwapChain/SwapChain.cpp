@@ -36,15 +36,6 @@ auto commandListHook(ID3D12CommandQueue* queue, UINT NumCommandLists, ID3D12Comm
 };
 
 auto presentHook(IDXGISwapChain3* ppSwapChain, UINT syncInterval, UINT flags) -> HRESULT {
-	
-	static int count = 0;
-
-	if(count < 100) {
-
-		count++;
-		return oPresentD3D12(ppSwapChain, syncInterval, flags);
-
-	};
 
 	auto instance = MC::getClientInstance();
 
