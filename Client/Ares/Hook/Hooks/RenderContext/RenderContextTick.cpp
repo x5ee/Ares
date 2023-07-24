@@ -10,11 +10,11 @@ auto RenderCtxCallback(void* p1, void* ctx) -> void {
 
     static int frameCount = 0;
 
-    if(rndrCtxMgr) {
+    if(rndrCtxMgr && ctx != nullptr) {
 
         frameCount++;
 
-        if(frameCount >= 3) {
+        if(frameCount > 3) {
 
             frameCount = 0;
 
