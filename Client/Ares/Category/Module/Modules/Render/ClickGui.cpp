@@ -1,18 +1,12 @@
 #include "ClickGui.h"
 
-auto ClickGui::onGameMode(GameMode* GM) -> void {
+auto ClickGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
 
     auto instance = MC::getClientInstance();
-
+    
     if(instance == nullptr)
         return;
     
-    instance->releaseMouse();
-
-};
-
-auto ClickGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
-
     *cancel = true;
     
     if(isDown || key != VK_ESCAPE)
@@ -24,6 +18,11 @@ auto ClickGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
 
 auto ClickGui::onMouse(MouseAction action, bool isDown, Vec2<short> mousePos, bool* cancel) -> void {
 
+    auto instance = MC::getClientInstance();
+    
+    if(instance == nullptr)
+        return;
+    
     *cancel = true;
 
 };
@@ -62,9 +61,6 @@ auto ClickGui::onImGui(void) -> void {
     
     if(ImGui::Begin(this->category->mgr->client->name.c_str(), nullptr, ImGuiWindowFlags_MenuBar)) {
         
-        auto added = ImVec2(ImGui::GetWindowPos().x + ImGui::GetWindowSize().x, ImGui::GetWindowPos().y + ImGui::GetWindowSize().y);
-        ImGui::GetWindowDrawList()->AddRectFilled(ImGui::GetWindowPos(), added, IM_COL32(56, 56, 56, 255), style.WindowRounding);
-
         static bool setWindowSize = false;
 
         if(!setWindowSize) {
@@ -151,11 +147,14 @@ auto ClickGui::onImGui(void) -> void {
 
 auto ClickGui::onRenderCtx(void* ctx) -> void {
 
-    auto instance = *(ClientInstance**)((uintptr_t)(ctx) + 0x8);
+    auto instance = MC::getClientInstance();
     auto screenName = (instance ? instance->getTopScreenName() : "");
 
     if(screenName.rfind("hud_screen") == std::string::npos)
         this->isEnabled = false;
+    
+    if(instance)
+        instance->releaseMouse();
 
 };
 
