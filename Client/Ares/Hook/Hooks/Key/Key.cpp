@@ -21,11 +21,11 @@ auto KeyHookCallback(uint64_t key, bool isDown) -> void {
             
             for(auto module : category->modules) {
                 
-                if(canUseKeys && module->key == key)
-                    module->isEnabled = !module->isEnabled;
-
                 if(module->isEnabled)
                     module->onKey(key, isDown, &cancel);
+                
+                if(canUseKeys && module->key == key)
+                    module->isEnabled = !module->isEnabled;
                 
             };
 
