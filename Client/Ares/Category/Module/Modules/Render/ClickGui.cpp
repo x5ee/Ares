@@ -2,28 +2,13 @@
 
 auto ClickGui::onKey(uint64_t key, bool isDown, bool* cancel) -> void {
 
-    auto instance = MC::getClientInstance();
-    
-    if(instance == nullptr)
-        return;
-    
-    *cancel = true;
-    
-    if(isDown || key != VK_ESCAPE)
-        return;
-    
-    this->isEnabled = false;
+    //
 
 };
 
 auto ClickGui::onMouse(MouseAction action, bool isDown, Vec2<short> mousePos, bool* cancel) -> void {
 
-    auto instance = MC::getClientInstance();
-    
-    if(instance == nullptr)
-        return;
-    
-    *cancel = true;
+    //
 
 };
 
@@ -49,7 +34,7 @@ auto ClickGui::onImGui(void) -> void {
     style.GrabRounding = 4.0f; // Rounding for "drag box" in a button
 
     ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(8.0f, 6.0f)); // Adjust frame padding for all elements
-    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]); // Use a larger font for improved readability
+    //ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]); // Use a larger font for improved readability
 
     auto categories = this->category->mgr->categories;
     
@@ -128,7 +113,7 @@ auto ClickGui::onImGui(void) -> void {
 
                 module->onImGuiOptions();
                 
-                ImGui::EndChild();
+                //ImGui::EndChild();
 
             };
 
@@ -141,7 +126,7 @@ auto ClickGui::onImGui(void) -> void {
     };
 
     ImGui::PopStyleVar();
-    ImGui::PopFont();
+    //ImGui::PopFont();
 
 };
 
