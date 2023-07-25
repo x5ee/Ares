@@ -17,3 +17,12 @@ auto MovementProxy::setOnGround(bool state) -> void {
     _SetOnGround(this, state);
 
 };
+
+auto MovementProxy::getHealth(void) -> int {
+
+    using GetHealth = int (__thiscall*)(MovementProxy*);
+    auto _GetHealth = (GetHealth)(this->VTable[43]);
+
+    return _GetHealth(this);
+
+};
