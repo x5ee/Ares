@@ -359,7 +359,7 @@ auto SwapChainHook::init(void) -> void {
 
     scMgr = this->mgr;
 	
-	IDXGISwapChain* pSwapChain;
+	IDXGISwapChain* pSwapChain = nullptr;
 
 	WNDCLASSEX windowClass;
 	windowClass.cbSize = sizeof(WNDCLASSEX);
