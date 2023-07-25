@@ -47,6 +47,26 @@ auto Killaura::onGameMode(GameMode* GM) -> void {
         }
     );
 
+    if(sortByHealth) {
+
+        const int maxElementsToKeep = 5;
+        
+        if (distsVector.size() > maxElementsToKeep)
+            distsVector.resize(maxElementsToKeep);
+        
+        std::sort(distsVector.begin(), distsVector.end(),
+            [&](const std::pair<uint64_t, double>& a, const std::pair<uint64_t, double>& b) {
+                
+                auto entA = level->getRuntimeEntity(a.first);
+                auto entB = level->getRuntimeEntity(b.first);
+
+                return entA->getMovementProxy()->getHealth() < entB->getMovementProxy()->getHealth();
+
+            }
+        );
+
+    };
+
     dists = std::map<uint64_t, double>(distsVector.begin(), distsVector.end());
 
     if(dists.empty())
@@ -78,5 +98,7 @@ auto Killaura::onImGuiOptions(void) -> void {
     ImGui::Checkbox("Mobs", &this->attackMobs);
     ImGui::SameLine();
     ImGui::Checkbox("Players", &this->attackPlayers);
+    ImGui::SameLine();
+    ImGui::Checkbox("Sort By Health", &this->sortByHealth);
 
 };
