@@ -9,6 +9,8 @@ public:
 public:
     auto isOnGround(void) -> bool;
     auto setOnGround(bool) -> void;
+public:
+    auto getHealth(void) -> int;
 };
 
 #endif /* CLIENT_SDK_CLASSES_MOVEMENTPROXY */
