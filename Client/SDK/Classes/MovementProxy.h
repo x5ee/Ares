@@ -11,6 +11,9 @@ public:
     auto setOnGround(bool) -> void;
 public:
     auto getHealth(void) -> int;
+    auto setCollision(bool) -> void;
+public:
+    auto setRotation(Vec2<float>*) -> void;
 };
 
 #endif /* CLIENT_SDK_CLASSES_MOVEMENTPROXY */
