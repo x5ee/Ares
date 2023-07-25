@@ -8,6 +8,7 @@
 #include <ostream>
 #include <bitset>
 #include <string>
+#include <random>
 
 class Utils {
 public:
