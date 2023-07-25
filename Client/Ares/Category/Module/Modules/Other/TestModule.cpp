@@ -10,15 +10,23 @@ auto TestModule::onEnable(void) -> void {
 
     auto instance = MC::getClientInstance();
     auto player = (instance ? instance->getPlayer() : nullptr);
+    
+    auto proxy = player->getMovementProxy();
 
     std::ostringstream o;
-    o << std::hex << player;
+    o << std::hex << proxy->VTable[74];
 
-    Utils::debugOutput(std::string("Player: " + o.str()));
+    Utils::debugOutput(o.str());
 
 };
 
 auto TestModule::onDisable(void) -> void {
+
+    //
+
+};
+
+auto TestModule::onGameMode(GameMode* GM) -> void {
 
     //
 
