@@ -13,6 +13,18 @@ auto Actor::getRuntimeID(void) -> uint64_t {
 
 };
 
+auto Actor::getMovementProxy(void) -> MovementProxy* {
+
+    using GetMovementProxyComponent = void* (__thiscall*)(void*, EntityId*);
+    static auto _GetMovementProxyComponent = (GetMovementProxyComponent)(Mem::findSig("40 53 48 83 EC ? 48 8B DA BA ? ? ? ? E8 ? ? ? ? 8B 0B 4C 8B D0 44 8B C1 8B C1 41 81 E0 ? ? ? ? 49 C1 E8 ? 4D 8B 4A ? 49 8B 52 ? 49 2B D1 48 C1 FA ? 4C 3B C2 73 ? 4B 8B 14 C1 48 85 D2 74 ? 25 ? ? ? ? 4C 8D 04 82 4D 85 C0 74 ? 81 E1 ? ? ? ? 41 33 08 81 F9 ? ? ? ? 73 ? 8B 04 82 49 8B 4A ? 25 ? ? ? ? 8B D0 83 E0 ? 48 C1 EA ? 48 C1 E0 ? 48 03 04 D1 48 83 C4 ? 5B C3 33 C0 48 83 C4 ? 5B C3 CC 40 53 48 83 EC ? 48 8B 01 48 8B D9 BA ? ? ? ? 48 8B 08 E8 ? ? ? ? 8B 4B ? 8B D1 81 E2 ? ? ? ? 44 8B C2 4C 8B 48 ? 48 8B 40 ? 49 2B C1 49 C1 E8 ? 48 C1 F8 ? 4C 3B C0 73 ? 4B 8B 04 C1 48 85 C0 74 ? 81 E2 ? ? ? ? 4C 8D 04 90 4D 85 C0 74 ? 81 E1 ? ? ? ? 41 33 08 81 F9 ? ? ? ? 73 ? B0 ? 48 83 C4 ? 5B C3 32 C0 48 83 C4 ? 5B C3 CC CC CC CC CC CC CC CC 40 53 48 83 EC ? 48 8B 01"));
+
+    auto registryBase = *(void**)(this->ctx.registry);
+    auto moveProxyComp = _GetMovementProxyComponent(registryBase, &this->ctx.id);
+
+    return *(MovementProxy**)(moveProxyComp);
+
+};
+
 auto Actor::getLevel(void) -> Level* {
 
     return *(Level**)((uintptr_t)(this) + 0x260);
