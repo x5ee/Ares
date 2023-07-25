@@ -28,6 +28,7 @@ auto Manager::baseTick(void) -> void {
 #include "Category/Module/Modules/Render/ClickGui.h"
 
 #include "Category/Module/Modules/Other/TestModule.h"
+#include "Category/Module/Modules/Other/Spammer.h"
 
 auto Manager::initSubModules(void) -> void {
 
@@ -69,6 +70,7 @@ auto Manager::initSubModules(void) -> void {
     if(other) {
 
         new TestModule(other);
+        new Spammer(other);
 
     };
 
