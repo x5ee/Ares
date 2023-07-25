@@ -2,6 +2,7 @@
 #define CLIENT_SDK_CLASSES_ACTOR
 
 #include "Level.h"
+#include "MovementProxy.h"
 
 template<typename A, typename B>
 class AutomaticID;
@@ -27,6 +28,8 @@ public:
     EntityContext ctx;
 public:
     auto getRuntimeID(void) -> uint64_t;
+    auto getMovementProxy(void) -> MovementProxy*;
+public:
     auto getLevel(void) -> Level*;
 public:
     auto getSize(void) -> Vec2<float>;
