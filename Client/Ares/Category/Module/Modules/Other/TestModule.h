@@ -12,6 +12,8 @@ public:
     auto onTick(void) -> void override;
     auto onEnable(void) -> void override;
     auto onDisable(void) -> void override;
+public:
+    auto onGameMode(GameMode*) -> void override;
 };
 
 #endif /* CLIENT_ARES_CATEGORY_MODULE_MODULES_OTHER_TESTMODULE */
