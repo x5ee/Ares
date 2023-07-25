@@ -1,19 +1,39 @@
 #include "Network.h"
+#include "../../../Category/Module/Module.h"
 
 typedef void (__thiscall* Send)(LoopbackPacketSender*, Packet*);
 Send _Send;
 
+Manager* pktMgr = nullptr;
+
 auto SendCallback(LoopbackPacketSender* _this, Packet* packet) -> void {
 
-    if(packet->VTable == TextPacket().VTable)
-        Utils::debugOutput("!");
+    bool cancel = false;
+    
+    if(pktMgr) {
 
-    _Send(_this, packet);
+        for(auto category : pktMgr->categories) {
+
+            for(auto module : category->modules) {
+
+                if(module->isEnabled)
+                    module->onPacket(packet, &cancel);
+
+            };
+
+        };
+
+    };
+
+    if(!cancel)
+        _Send(_this, packet);
 
 };
 
 auto NetworkHook::init(void) -> void {
 
+    pktMgr = this->mgr;
+    
     auto sig = Mem::findSig("48 8D 05 ? ? ? ? 48 8B 5C 24 ? 48 89 06 33 C0");
 
     if(!sig)
