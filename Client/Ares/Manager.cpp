@@ -21,6 +21,8 @@ auto Manager::baseTick(void) -> void {
 #include "Category/Module/Modules/Combat/Killaura.h"
 #include "Category/Module/Modules/Combat/Hitbox.h"
 
+#include "Category/Module/Modules/Move/AirJump.h"
+
 #include "Category/Module/Modules/Player/AutoSprint.h"
 
 #include "Category/Module/Modules/Render/ClickGui.h"
@@ -35,6 +37,14 @@ auto Manager::initSubModules(void) -> void {
 
         new Killaura(combat);
         new Hitbox(combat);
+
+    };
+
+    auto move = this->findCategory("Move");
+
+    if(move) {
+
+        new AirJump(move);
 
     };
 
@@ -58,7 +68,7 @@ auto Manager::initSubModules(void) -> void {
 
     if(other) {
 
-        //new TestModule(other);
+        new TestModule(other);
 
     };
 
