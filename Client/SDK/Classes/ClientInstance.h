@@ -1,11 +1,14 @@
 #ifndef CLIENT_SDK_CLASSES_CLIENTINSTANCE
 #define CLIENT_SDK_CLASSES_CLIENTINSTANCE
 
+#include "LoopbackPacketSender.h"
 #include "Player.h"
 
 class ClientInstance {
 public:
     unsigned long long** VTable;
+public:
+    auto getLoopbackPacketSender(void) -> LoopbackPacketSender*;
 public:
     auto getPlayer(void) -> Player*;
 public:

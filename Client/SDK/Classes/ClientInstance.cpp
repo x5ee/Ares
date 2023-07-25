@@ -1,5 +1,11 @@
 #include "ClientInstance.h"
 
+auto ClientInstance::getLoopbackPacketSender(void) -> LoopbackPacketSender* {
+
+    return *(LoopbackPacketSender**)((uintptr_t)(this) + 0xF0);
+
+};
+
 auto ClientInstance::getPlayer(void) -> Player* {
 
     using GetPlayer = Player* (__thiscall*)(ClientInstance*);
