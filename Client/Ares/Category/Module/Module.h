@@ -21,6 +21,7 @@ public:
     virtual auto onDisable(void) -> void {};
 public:
     virtual auto onRenderCtx(void*) -> void {};
+    virtual auto onPacket(Packet*, bool*) -> void {};
 public:
     virtual auto onImGui(void) -> void {};
     virtual auto onImGuiOptions(void) -> void {};
