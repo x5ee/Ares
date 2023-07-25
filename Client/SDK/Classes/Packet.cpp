@@ -1,4 +1,5 @@
 #include "Packet.h"
+#include "Player.h"
 
 template<typename T>
 auto Packet::setVTable(uintptr_t sig) -> void {
@@ -24,5 +25,18 @@ TextPacket::TextPacket(void) {
 
     static auto sig = Mem::findSig("48 8D 05 ? ? ? ? 48 89 45 ? C6 85 ? ? ? ? ? 48 89 B5");
     this->setVTable<TextPacket>(sig);
+
+};
+
+TextPacket::TextPacket(Player* player, std::string msg) {
+
+    *this = TextPacket();
+
+    this->type = TextPacketType::CHAT;
+    this->author = player->getNameTag();
+    this->message = msg;
+
+    this->xboxUserId = std::string("");
+    this->platformChatId = std::string("");
 
 };
