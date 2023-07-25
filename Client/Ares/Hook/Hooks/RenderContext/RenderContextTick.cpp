@@ -8,46 +8,36 @@ Manager* rndrCtxMgr = nullptr;
 
 auto RenderCtxCallback(void* p1, void* ctx) -> void {
 
-    static int frameCount = 0;
-
     if(rndrCtxMgr && ctx != nullptr) {
 
-        frameCount++;
+        for(auto category : rndrCtxMgr->categories) {
 
-        if(frameCount > 3) {
+            for(auto module : category->modules) {
+                if(module->isEnabled)
+                    module->onRenderCtx(ctx);
+            };
+        };
 
-            frameCount = 0;
+        auto instance = *(ClientInstance**)((uintptr_t)(ctx) + 0x8);
+        
+        auto player = (instance ? instance->getPlayer() : nullptr);
+        auto level = (player ? player->getLevel() : nullptr);
 
-            for(auto category : rndrCtxMgr->categories) {
+        if(level != nullptr) {
 
-                for(auto module : category->modules) {
-                    if(module->isEnabled)
-                        module->onRenderCtx(ctx);
-                };
+            for(auto [ runtimeId, entity ] : rndrCtxMgr->entityMap) {
+
+                auto ent = level->getRuntimeEntity(runtimeId);
+
+                if(ent == nullptr)
+                    rndrCtxMgr->entityMap.erase(runtimeId);
+
             };
 
-            auto instance = *(ClientInstance**)((uintptr_t)(ctx) + 0x8);
-            
-            auto player = (instance ? instance->getPlayer() : nullptr);
-            auto level = (player ? player->getLevel() : nullptr);
+        } else {
 
-            if(level != nullptr) {
-
-                for(auto [ runtimeId, entity ] : rndrCtxMgr->entityMap) {
-
-                    auto ent = level->getRuntimeEntity(runtimeId);
-
-                    if(ent == nullptr)
-                        rndrCtxMgr->entityMap.erase(runtimeId);
-
-                };
-
-            } else {
-
-                if(!rndrCtxMgr->entityMap.empty())
-                    rndrCtxMgr->entityMap.clear();
-
-            };
+            if(!rndrCtxMgr->entityMap.empty())
+                rndrCtxMgr->entityMap.clear();
 
         };
 
